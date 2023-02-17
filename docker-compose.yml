@@ -22,7 +22,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   app-books:
-    image: seckq/app-books:1.0.0
+    image: jaimesalvador/app-books:1.0.0
     ports:
       - 6060
     deploy:
@@ -41,7 +41,7 @@ services:
       - "traefik.http.middlewares.app-books-stripprefix.stripprefix.prefixes=/app-books"
       - "traefik.http.routers.app-books.middlewares=app-books-stripprefix"
   app-authors:
-    image: seckq/app-authors:1.0.0
+    image: jaimesalvador/app-authors:1.0.0
     environment:
       QUARKUS_DATASOURCE_USERNAME: postgres
       QUARKUS_DATASOURCE_JDBC_PASSWORD: postgres
@@ -60,7 +60,7 @@ services:
       - "traefik.http.middlewares.app-authors-stripprefix.stripprefix.prefixes=/app-authors"
       - "traefik.http.routers.app-authors.middlewares=app-authors-stripprefix"
   app-web:
-    image: seckq/app-web:1.0.0
+    image: jaimesalvador/app-web:1.0.0
     ports:
       - 8080:8080
     depends_on:
